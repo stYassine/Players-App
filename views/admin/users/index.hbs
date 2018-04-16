@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+
+            <h4>Users List</h4>
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <th>Id</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
+                </thead>
+                <tbody>
+                    {{#each users}}
+                        <tr>
+                            <td>{{this._id}}</td>
+                            <td>{{this.username}}</td>
+                            <td>{{this.email}}</td>
+                            <td><a href="http://localhost:8080/dashboard/users/edit/{{this._id}}" class="btn btn-info">Edit</a></td>
+                            <td>
+                                <form id="removeUser">
+                                    <button type="submit" class="btn btn-danger">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+
+        $('#removeUser').submit(function(){
+
+            {{!-- $.ajax({
+                url: 'http://localhost:8080/login',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(user),
+                success: function(response){
+                    console.log(response);
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            }); --}}
+
+        });
+
+    });
+</script>

@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+
+            <h4>Reviews List</h4>
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <th>Id</th>
+                    <th>Review</th>
+                    <th>Rating</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
+                </thead>
+                <tbody>
+                    {{#each reviews}}
+                        <tr>
+                            <td>{{this._id}}</td>
+                            <td>{{this.review}}</td>
+                            <td>{{this.rating}}</td>
+                            <td><a href="http://localhost:8080/dashboard/reviews/edit/{{this._id}}" class="btn btn-info">Edit</a></td>
+                            <td>
+                                <form id="removeReview">
+                                    <button type="submit" class="btn btn-danger">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+
+        $('#removeReview').submit(function(){
+
+            {{!-- $.ajax({
+                url: 'http://localhost:8080/dashboard/reviews/remove',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(user),
+                success: function(response){
+                    console.log(response);
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            }); --}}
+
+        });
+
+    });
+</script>

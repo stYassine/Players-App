@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+
+            <h4>Create Reviews</h4>
+
+            <form id="createReview">
+
+                <div class="form-group">
+                    <label for="">Article Id</label>
+                    <input type="text" id="article_id" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Review</label>
+                    <input type="text" id="review" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Rating</label>
+                    <input type="text" id="rating" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Create</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+
+        $('#createReview').submit(function(){
+
+            var review ={
+                article_id: $('#article_id').val(),
+                review: $('#review').val(),
+                rating: $('#rating').val()
+            };
+
+            $.ajax({
+                url: 'http://localhost:8080/dashboard/reviews/create',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(review),
+                success: function(response){
+                    console.log(response);
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            });
+
+        });
+
+    });
+</script>
